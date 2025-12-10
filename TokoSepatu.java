@@ -16,11 +16,19 @@ public class TokoSepatu{
 
     static void editData(Scanner scanner){
         tampilkanDataSepatu(dataSepatu);
-        System.out.println("Pilih data yang ingin diedit");
+        System.out.print("Pilih data yang ingin diedit:");
         int edited = scanner.nextInt();
-        for(int i = 0; i < 3; i++){
-            System.out.print(dataSepatu[edited - 1][i] + " ");
-        }
+      
+        System.out.print("Edit harga:");
+        String harga = scanner.next();
+        System.out.print("Edit jarak:");
+        String jarak = scanner.next();
+
+        dataSepatu[edited - 1][1] = harga;
+        dataSepatu[edited - 1][2] = jarak;
+
+        tampilkanDataSepatu(dataSepatu);
+
     }
 
     static int pilihMenu(Scanner scanner){
