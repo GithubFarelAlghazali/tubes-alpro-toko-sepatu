@@ -15,6 +15,8 @@ public class TokoSepatu{
         return menu;
     }
     public static void main(String[] args){
-        
+        Scanner scanner = new Scanner(System.in);
+        int menu = pilihMenu(scanner);
+        System.out.println(menu);
     }
 }
