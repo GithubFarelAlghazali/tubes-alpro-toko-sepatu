@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
 public class TokoSepatu{
-    static String[][] dataSepatu = {{ "Nike", "120000", "1km" },{"Rebook", "100000", "90km"},{"Adidas", "250000", "250km"}};
+    static String[][] dataSepatu = {{ "Nike", "120000", "1km" },{"Rebook", "100000", "90km"},{"Adidas", "250000", "250km"}, {"Water Jordan", "500000", "100km"}};
 
     // Method to display all items in the dataSepatu array
     static void tampilkanDataSepatu(String[][] dataSepatu) {
-        System.out.println("Daftar Sepatu:");
+        System.out.println("\nDaftar Sepatu:\n");
         for (int i = 0; i < dataSepatu.length; i++) {
             for(int j = 0; j < 3; j++){
                 System.out.print(dataSepatu[i][j] + " ");
@@ -16,16 +16,30 @@ public class TokoSepatu{
 
     static void editData(Scanner scanner){
         tampilkanDataSepatu(dataSepatu);
-        System.out.print("Pilih data yang ingin diedit:");
-        int edited = scanner.nextInt();
-      
-        System.out.print("Edit harga:");
+        System.out.println();
+        System.out.print("Pilih merk yang ingin diedit: ");
+        String merk = scanner.next();
+        int edited = 0;
+        boolean isHere = false;
+        for(int i = 0; i < dataSepatu.length; i++){
+            if(dataSepatu[i][0].toLowerCase().equals(merk.toLowerCase())){
+                edited = i;
+                isHere = true;
+            }
+        }
+
+        if(!isHere){
+            System.out.println("Merek tidak ada boss");
+            return;
+        }
+
+        System.out.print("Edit harga: ");
         String harga = scanner.next();
-        System.out.print("Edit jarak:");
+        System.out.print("Edit jarak: ");
         String jarak = scanner.next();
 
-        dataSepatu[edited - 1][1] = harga;
-        dataSepatu[edited - 1][2] = jarak;
+        dataSepatu[edited][1] = harga ;
+        dataSepatu[edited][2] = jarak + "km";
 
         tampilkanDataSepatu(dataSepatu);
 
@@ -46,7 +60,17 @@ public class TokoSepatu{
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         int menu = pilihMenu(scanner);
-        System.out.println(menu);
-        editData(scanner);
+
+        switch(menu){
+            case 3:
+                editData(scanner);
+            break;
+            case 0:
+                System.out.println("Ceritanya kelar");
+            break;
+            default:
+                System.out.println("Udah terserahh kelan");
+        }
+
     }
 }
