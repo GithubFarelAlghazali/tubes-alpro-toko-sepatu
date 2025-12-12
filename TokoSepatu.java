@@ -47,7 +47,8 @@ public class TokoSepatu{
         tampilkanDataSepatu(1);
         System.out.println();
         System.out.print("Pilih merk yang ingin diedit: ");
-        String merk = scanner.next();
+        scanner.nextLine();
+        String merk = scanner.nextLine();
         int edited = 0;
         boolean isHere = false;
         for(int i = 0; i < dataSepatu.length; i++){
@@ -122,6 +123,9 @@ public class TokoSepatu{
     }
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
+        boolean run = true;
+
+        while(run){
         int menu = pilihMenu(scanner);
 
         switch(menu){
@@ -140,9 +144,11 @@ public class TokoSepatu{
             break;
             case 0:
                 System.out.println("Ceritanya kelar");
+                run = false;
             break;
             default:
                 System.out.println("Udah terserahh kelan");
+        }
         }
 
     }
