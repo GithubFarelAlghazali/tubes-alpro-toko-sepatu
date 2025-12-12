@@ -7,19 +7,44 @@ public class TokoSepatu{
     {"Adidas", "250000", "250km"}, 
     {"Water Jordan", "500000", "100km"}};
 
-    // Method to display all items in the dataSepatu array
-    static void tampilkanDataSepatu(String[][] dataSepatu) {
-        System.out.println("\nDaftar Sepatu:\n");
-        for (int i = 0; i < dataSepatu.length; i++) {
-            for(int j = 0; j < 3; j++){
-                System.out.print(dataSepatu[i][j] + " ");
-            }
-                System.out.println();
+    static void tampilkanDataSepatu(int mode) {
+    String[][] copy = new String[dataSepatu.length][3];
+    for (int i = 0; i < dataSepatu.length; i++) {
+        for (int j = 0; j < 3; j++) {
+            copy[i][j] = dataSepatu[i][j];
         }
     }
 
+    for (int i = 0; i < copy.length - 1; i++) {
+        for (int j = 0; j < copy.length - i - 1; j++) {
+            int h1 = Integer.parseInt(copy[j][1]);
+            int h2 = Integer.parseInt(copy[j + 1][1]);
+
+            boolean kondisi = (mode != 1) ? h1 > h2 : h1 < h2;  
+            if (kondisi) {
+                String[] temp = copy[j];
+                copy[j] = copy[j + 1];
+                copy[j + 1] = temp;
+            }
+        }
+    }
+
+    
+    System.out.println("\n==== DATA SEPATU ====\n");
+
+    System.out.printf("%-15s %-12s %-10s\n", "Merk", "Harga", "Jarak");
+    System.out.println("------------------------------------------");
+
+    for (int i = 0; i < copy.length; i++) {
+        System.out.printf("%-15s Rp%-10s %-10s\n",
+                copy[i][0], copy[i][1], copy[i][2]);
+    }
+
+    System.out.println("------------------------------------------\n");
+}
+
     static void editData(Scanner scanner){
-        tampilkanDataSepatu(dataSepatu);
+        tampilkanDataSepatu(1);
         System.out.println();
         System.out.print("Pilih merk yang ingin diedit: ");
         String merk = scanner.next();
@@ -45,12 +70,12 @@ public class TokoSepatu{
         dataSepatu[edited][1] = harga ;
         dataSepatu[edited][2] = jarak + "km";
 
-        tampilkanDataSepatu(dataSepatu);
+        tampilkanDataSepatu(1);
 
     }
 
      static void hapusData(Scanner scanner){
-        tampilkanDataSepatu(dataSepatu);
+        tampilkanDataSepatu(1);
         System.out.println();
         System.out.print("Pilih merk yang ingin diedit: ");
         String merk = scanner.next();
@@ -78,7 +103,7 @@ public class TokoSepatu{
         }
 
         dataSepatu = newArray;
-        tampilkanDataSepatu(dataSepatu);
+        tampilkanDataSepatu(1);
 
     }
 
@@ -100,6 +125,13 @@ public class TokoSepatu{
         int menu = pilihMenu(scanner);
 
         switch(menu){
+            case 1:
+                System.out.println("Urutkan dari: ");
+                System.out.println("1. Mahal -> Murah");
+                System.out.println("2. Murah -> Mahal ");
+                int mode = scanner.nextInt();
+                tampilkanDataSepatu(mode);
+            break;
             case 3:
                 editData(scanner);
             break;
