@@ -1,7 +1,11 @@
 import java.util.Scanner;
 
 public class TokoSepatu{
-    static String[][] dataSepatu = {{ "Nike", "120000", "1km" },{"Rebook", "100000", "90km"},{"Adidas", "250000", "250km"}, {"Water Jordan", "500000", "100km"}};
+    static String[][] dataSepatu = {
+    { "Nike", "120000", "1km" },
+    {"Rebook", "100000", "90km"},
+    {"Adidas", "250000", "250km"}, 
+    {"Water Jordan", "500000", "100km"}};
 
     // Method to display all items in the dataSepatu array
     static void tampilkanDataSepatu(String[][] dataSepatu) {
@@ -45,6 +49,40 @@ public class TokoSepatu{
 
     }
 
+     static void hapusData(Scanner scanner){
+        tampilkanDataSepatu(dataSepatu);
+        System.out.println();
+        System.out.print("Pilih merk yang ingin diedit: ");
+        String merk = scanner.next();
+        int edited = 0;
+        boolean isHere = false;
+        for(int i = 0; i < dataSepatu.length; i++){
+            if(dataSepatu[i][0].toLowerCase().equals(merk.toLowerCase())){
+                edited = i;
+                isHere = true;
+            }
+        }
+
+        if(!isHere){
+            System.out.println("Merek tidak ada boss");
+            return;
+        }
+
+        String[][] newArray = new String[dataSepatu.length - 1][3];
+        int pos = 0;
+
+        for (int i = 0; i < dataSepatu.length; i++) {
+            if(i != edited){
+            newArray[pos] = dataSepatu[i];
+            pos++;} 
+        }
+
+        dataSepatu = newArray;
+        tampilkanDataSepatu(dataSepatu);
+
+    }
+
+
     static int pilihMenu(Scanner scanner){
         System.out.println("==== ADMIN TOKO SEPATU LARIS ====");
         System.out.println("Opsi: ");
@@ -64,6 +102,9 @@ public class TokoSepatu{
         switch(menu){
             case 3:
                 editData(scanner);
+            break;
+            case 4:
+                hapusData(scanner);
             break;
             case 0:
                 System.out.println("Ceritanya kelar");
