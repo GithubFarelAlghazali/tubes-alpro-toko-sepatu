@@ -59,18 +59,7 @@ public class TokoSepatu{
     }
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
-        int menu = pilihMenu(scanner);
-
-        switch(menu){
-            case 3:
-                editData(scanner);
-            break;
-            case 0:
-                System.out.println("Ceritanya kelar");
-            break;
-            default:
-                System.out.println("Udah terserahh kelan");
-        }
-
+        int menu = pilihMenu(scanner );
+     
     }
 }
