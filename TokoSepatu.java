@@ -17,6 +17,26 @@ public class TokoSepatu{
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         int menu = pilihMenu(scanner );
-        System.out.println(menu);
+        
+        switch(menu){
+            case 0:
+                System.out.println("Selesai");
+                break;
+            case 1:
+                System.out.println("Tampilkan data");
+                break;
+            case 2:
+                System.out.println("Masukkan data");
+                break;
+            case 3:
+                System.out.println("Edit data");
+                break;
+            case 4:
+                System.out.println("Hapus data");
+                break;
+            default:
+                System.out.println("Opsi tidak sesuai");
+                break;
+        }
     }
 }
