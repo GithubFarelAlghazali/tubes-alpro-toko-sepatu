@@ -4,6 +4,11 @@ public class TokoSepatu{
     static String[][] dataSepatu = new String[100][5];
     static int count = 0;
 
+    static void clearScreen() {  
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }  
+
     static void tampilkanDataSepatu(int mode) {
         if (count == 0) {
             System.out.println("Data sepatu belum ada. Silakan input data terlebih dahulu.");
@@ -43,6 +48,7 @@ public class TokoSepatu{
             System.out.printf("%-15s Rp%-10s %-10s Rp%-15s Rp%-15s\n",merk, harga, jarak, ppn , totalPPN);}
 
         System.out.println("------------------------------------------------------------------------------------\n");
+
     }
 
     static int cariMerk(String merk){
@@ -152,6 +158,7 @@ public class TokoSepatu{
     }
 
     static int pilihMenu(Scanner scanner){
+   
         System.out.println("==== ADMIN TOKO SEPATU LARIS ====");
         System.out.println("Opsi: ");
         System.out.println("1. Tampilkan data sepatu");
@@ -166,12 +173,15 @@ public class TokoSepatu{
 
 
     public static void main(String[] args){
+        clearScreen();
         Scanner scanner = new Scanner(System.in);
         boolean run = true;
 
         while(run){
         int menu = pilihMenu(scanner);
 
+        clearScreen();
+        System.out.println();
         switch(menu){
             case 1:
                 System.out.println("Urutkan dari: ");
@@ -190,11 +200,11 @@ public class TokoSepatu{
                 hapusData(scanner);
             break;
             case 0:
-                System.out.println("Ceritanya kelar");
+                System.out.println("Proram ditutup");
                 run = false;
             break;
             default:
-                System.out.println("Udah terserahh kelan");
+                System.out.println("Input tidak terdaftar, masukkan sesuai daftar!");
         }
         }
 
