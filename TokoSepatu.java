@@ -5,137 +5,57 @@ public class TokoSepatu{
     static int count = 0;
 
     static void tampilkanDataSepatu(int mode) {
-    if (count == 0) {
-        System.out.println("Data sepatu belum ada. Silakan input data terlebih dahulu.");
-        return;}
-        
-    String[][] copy = new String[count][5];
-    for (int i = 0; i < count; i++) {
-        for (int j = 0; j < 5; j++) {
-            copy[i][j] = dataSepatu[i][j];
+        if (count == 0) {
+            System.out.println("Data sepatu belum ada. Silakan input data terlebih dahulu.");
+            return;}
+            
+        String[][] copy = new String[count][5];
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < 5; j++) {
+                copy[i][j] = dataSepatu[i][j];
+                }
+            }
+
+        for (int i = 0; i < copy.length - 1; i++) {
+            for (int j = 0; j < copy.length - i - 1; j++) {
+                int h1 = Integer.parseInt(copy[j][4]);
+                int h2 = Integer.parseInt(copy[j + 1][4]);
+
+                boolean kondisi = (mode != 1) ? h1 > h2 : h1 < h2;  
+                if (kondisi) {
+                    String[] temp = copy[j];
+                    copy[j] = copy[j + 1];
+                    copy[j + 1] = temp;
+                }
             }
         }
 
-    for (int i = 0; i < copy.length - 1; i++) {
-        for (int j = 0; j < copy.length - i - 1; j++) {
-            int h1 = Integer.parseInt(copy[j][4]);
-            int h2 = Integer.parseInt(copy[j + 1][4]);
+        System.out.println("\n==== DATA SEPATU ====\n");
+        System.out.printf("%-15s %-12s %-10s %-15s %-15s\n", "Merk", "Harga", "Jarak (km)","PPN","Total Bayar");
+        System.out.println("------------------------------------------------------------------------------------\n");
 
-            boolean kondisi = (mode != 1) ? h1 > h2 : h1 < h2;  
-            if (kondisi) {
-                String[] temp = copy[j];
-                copy[j] = copy[j + 1];
-                copy[j + 1] = temp;
-            }
-        }
+        for (int i = 0; i < copy.length; i++) {
+            String merk = copy[i][0];
+            String harga = copy[i][1];
+            String jarak = copy[i][2];
+            String ppn = copy[i][3];
+            String totalPPN = copy[i][4];
+            System.out.printf("%-15s Rp%-10s %-10s Rp%-15s Rp%-15s\n",merk, harga, jarak, ppn , totalPPN);}
+
+        System.out.println("------------------------------------------------------------------------------------\n");
     }
 
-    System.out.println("\n==== DATA SEPATU ====\n");
-    System.out.printf("%-15s %-12s %-10s %-15s %-15s\n", "Merk", "Harga", "Jarak (km)","PPN","Total Bayar");
-    System.out.println("------------------------------------------------------------------------------------\n");
-
-    for (int i = 0; i < copy.length; i++) {
-        String merk = copy[i][0];
-        String harga = copy[i][1];
-        String jarak = copy[i][2];
-        String ppn = copy[i][3];
-        String totalPPN = copy[i][4];
-        System.out.printf("%-15s Rp%-10s %-10s Rp%-15s Rp%-15s\n",merk, harga, jarak, ppn , totalPPN);}
-
-    System.out.println("------------------------------------------------------------------------------------\n");
-    }
-
-    
-    static void editData(Scanner scanner){
-        tampilkanDataSepatu(1);
-        System.out.println();
-        System.out.print("Pilih merk yang ingin diedit: ");
-        scanner.nextLine();
-        String merk = scanner.nextLine();
-        int edited = 0;
-        boolean isHere = false;
+    static int cariMerk(String merk){
+        int index = -1;
         for(int i = 0; i < count; i++){
             if(dataSepatu[i][0].toLowerCase().equals(merk.toLowerCase())){
-                edited = i;
-                isHere = true;
+                index = i;
             }
         }
-
-        if(!isHere){
-            System.out.println("Merek tidak ada boss");
-            return;
-        }
-
-        System.out.print("Edit harga: ");
-        String harga = scanner.next();
-        System.out.print("Edit jarak: ");
-        String jarak = scanner.next();
-        int ongkir;
-
-            if (Integer.parseInt(jarak) <= 10) {
-                ongkir = 10000;
-            } else {
-                ongkir = 20000;
-            }
-
-            int totalSebelumPPN = Integer.parseInt(harga) + ongkir;
-            double ppn = totalSebelumPPN * 0.1;
-            double totalPPN = totalSebelumPPN + ppn;
-
-
-        dataSepatu[edited][1] = harga;
-        dataSepatu[edited][2] = jarak;
-        dataSepatu[edited][3] = String.valueOf((int) ppn);
-        dataSepatu[edited][4] = String.valueOf((int) totalPPN);
-
-        tampilkanDataSepatu(1);
-
+        return index;
     }
 
-     static void hapusData(Scanner scanner){
-        tampilkanDataSepatu(1);
-        System.out.println();
-        System.out.print("Pilih merk yang ingin diedit: ");
-        String merk = scanner.next();
-        int deleted = 0;
-        boolean isHere = false;
-        for(int i = 0; i < count; i++){
-            if(dataSepatu[i][0].toLowerCase().equals(merk.toLowerCase())){
-                deleted = i;
-                isHere = true;
-            }
-        }
-
-        if(!isHere){
-            System.out.println("Merek tidak ada boss");
-            return;
-        }
-
-        for (int i = deleted; i < count - 1; i++) {
-           dataSepatu[i] = dataSepatu[i + 1];
-        }
-
-        dataSepatu[count - 1] = new String[5]; 
-        count--;
-
-        tampilkanDataSepatu(1);
-
-    }
-
-    static int pilihMenu(Scanner scanner){
-        System.out.println("==== ADMIN TOKO SEPATU LARIS ====");
-        System.out.println("Opsi: ");
-        System.out.println("1. Tampilkan data sepatu");
-        System.out.println("2. Input data sepatu");
-        System.out.println("3. Edit data sepatu");
-        System.out.println("4. Hapus data sepatu");
-        System.out.println("0. Keluar");
-        System.out.print("Pilih opsi: ");
-        int menu = scanner.nextInt();
-        return menu;
-    }
-
-     static void inputDataSepatu(Scanner scanner) {
+    static void inputDataSepatu(Scanner scanner) {
         if (count >= dataSepatu.length) {
             System.out.println("Data sepatu sudah penuh, tidak bisa tambah lagi.");
             return;
@@ -169,6 +89,81 @@ public class TokoSepatu{
 
         System.out.println("Data sepatu berhasil ditambahkan.");
     }
+
+    static void editData(Scanner scanner){
+        tampilkanDataSepatu(1);
+        System.out.println();
+        System.out.print("Pilih merk yang ingin diedit: ");
+        scanner.nextLine();
+        String merk = scanner.nextLine();
+        int edited = cariMerk(merk);
+
+        if(edited < 0){
+            System.out.println("Merek tidak ada boss");
+            return;
+        }
+
+        System.out.print("Edit harga: ");
+        String harga = scanner.next();
+        System.out.print("Edit jarak: ");
+        String jarak = scanner.next();
+        int ongkir;
+
+            if (Integer.parseInt(jarak) <= 10) {
+                ongkir = 10000;
+            } else {
+                ongkir = 20000;
+            }
+
+            int totalSebelumPPN = Integer.parseInt(harga) + ongkir;
+            double ppn = totalSebelumPPN * 0.1;
+            double totalPPN = totalSebelumPPN + ppn;
+
+
+        dataSepatu[edited][1] = harga;
+        dataSepatu[edited][2] = jarak;
+        dataSepatu[edited][3] = String.valueOf((int) ppn);
+        dataSepatu[edited][4] = String.valueOf((int) totalPPN);
+
+        tampilkanDataSepatu(1);
+
+    }
+
+    static void hapusData(Scanner scanner){
+        tampilkanDataSepatu(1);
+        System.out.println();
+        System.out.print("Pilih merk yang ingin diedit: ");
+        String merk = scanner.next();
+        int deleted = cariMerk(merk);
+        if(deleted < 0){
+            System.out.println("Merek tidak ada boss");
+            return;
+        }
+
+        for (int i = deleted; i < count - 1; i++) {
+           dataSepatu[i] = dataSepatu[i + 1];
+        }
+
+        dataSepatu[count - 1] = new String[5]; 
+        count--;
+
+        tampilkanDataSepatu(1);
+
+    }
+
+    static int pilihMenu(Scanner scanner){
+        System.out.println("==== ADMIN TOKO SEPATU LARIS ====");
+        System.out.println("Opsi: ");
+        System.out.println("1. Tampilkan data sepatu");
+        System.out.println("2. Input data sepatu");
+        System.out.println("3. Edit data sepatu");
+        System.out.println("4. Hapus data sepatu");
+        System.out.println("0. Keluar");
+        System.out.print("Pilih opsi: ");
+        int menu = scanner.nextInt();
+        return menu;
+    }
+
 
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
