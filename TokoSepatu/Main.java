@@ -31,17 +31,21 @@ public class Main{
             Tampilkan.tampilkanData(mode, dataSepatu, count);
 
             int menu = pilihMenu(scanner);
+           
 
             switch (menu) {
                 case 1:
                     System.out.println("Urutkan dari: " + (mode == 1 ? "paling murah" : "paling mahal") + "(y/n):");
                     String input = scanner.next();
-                    if (input.equalsIgnoreCase("y")) {
-                        mode = 2;
-                    } else if (input.equalsIgnoreCase("n")) {
-                        mode = 1;
+                   
+                    if (mode == 1) {
+                        if (input.equalsIgnoreCase("y")) {
+                            mode = 2;
+                        }
                     } else {
-                        System.out.println("Input salah");
+                        if (input.equalsIgnoreCase("y")) {
+                            mode = 1;
+                        }
                     }
                     break;
                 case 2:
