@@ -9,6 +9,7 @@ public class Utils {
     }
 
     public static void pressToNext(Scanner scanner){
+        scanner.nextLine();
         System.out.println("Tekan \"ENTER\" untuk kembali ke dashboard");
         scanner.nextLine();
     }
