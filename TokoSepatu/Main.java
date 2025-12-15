@@ -4,7 +4,7 @@ import TokoSepatu.Input;
 
 public class Main{
 
-    static String[][] dataSepatu = new String[100][5];
+    static String[][] dataSepatu = new String[100][9];
     static int count = 0;
 
     // static void editData(Scanner scanner){
@@ -97,10 +97,12 @@ public class Main{
                 System.out.println("1. Mahal -> Murah");
                 System.out.println("2. Murah -> Mahal ");
                 int mode = scanner.nextInt();
-                Tampilkan.tampilkanData(mode, dataSepatu);
+                Input.Tampilkan.tampilkanData(mode, dataSepatu);
             break;
             case 2:
                 Input.inputSepatu(scanner, count, dataSepatu);
+                count++;
+            break;
             case 3:
                 // editData(scanner);
             break;
