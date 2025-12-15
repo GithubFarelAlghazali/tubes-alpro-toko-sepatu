@@ -1,15 +1,14 @@
 package TokoSepatu;
 import java.util.Scanner;
-import TokoSepatu.*;
 
 public class Main{
 
     static String[][] dataSepatu = new String[100][5];
     static int count = 0;
 
-   
+
+
     static int pilihMenu(Scanner scanner){
-   
         System.out.println("==== ADMIN TOKO SEPATU LARIS ====");
         System.out.println("Opsi: ");
         System.out.println("1. Tampilkan data sepatu");
@@ -47,7 +46,7 @@ public class Main{
                 Edit.editData(scanner, dataSepatu);
             break;
             case 4:
-                // hapusData(scanner);
+                Hapus.hapusData(scanner, dataSepatu);
             break;
             case 0:
                 System.out.println("Proram ditutup");
