@@ -44,7 +44,7 @@ public class Main{
             case 2:
                 Input.inputSepatu(scanner, count, dataSepatu);
             case 3:
-                // editData(scanner);
+                Edit.editData(scanner, dataSepatu);
             break;
             case 4:
                 // hapusData(scanner);
