@@ -1,71 +1,13 @@
 package TokoSepatu;
 import java.util.Scanner;
-import TokoSepatu.Input;
+import TokoSepatu.*;
 
 public class Main{
 
     static String[][] dataSepatu = new String[100][5];
     static int count = 0;
 
-    // static void editData(Scanner scanner){
-    //     Tampilkan.tampilkanData(1, dataSepatu);
-    //     System.out.println();
-    //     System.out.print("Pilih merk yang ingin diedit: ");
-    //     scanner.nextLine();
-    //     String merk = scanner.nextLine();
-    //     int edited = cariMerk(merk);
-
-    //     if(edited < 0){
-    //         System.out.println("Merek tidak ada boss");
-    //         return;
-    //     }
-
-    //     System.out.print("Edit harga: ");
-    //     String harga = scanner.next();
-    //     System.out.print("Edit jarak: ");
-    //     String jarak = scanner.next();
-    //     int ongkir;
-
-    //         if (Integer.parseInt(jarak) <= 10) {
-    //             ongkir = 10000;
-    //         } else {
-    //             ongkir = 20000;
-    //         }
-
-    //         int totalSebelumPPN = Integer.parseInt(harga) + ongkir;
-    //         double ppn = totalSebelumPPN * 0.1;
-    //         double totalPPN = totalSebelumPPN + ppn;
-
-
-    //     dataSepatu[edited][1] = harga;
-    //     dataSepatu[edited][2] = jarak;
-    //     dataSepatu[edited][3] = String.valueOf((int) ppn);
-    //     dataSepatu[edited][4] = String.valueOf((int) totalPPN);
-
-    //     Tampilkan.tampilkanData(1, dataSepatu);
-
-    // }
-
-    //  static void hapusData(Scanner scanner){
-    //     Tampilkan.tampilkanData(1, dataSepatu);
-    //     System.out.println();
-    //     System.out.print("Pilih merk yang ingin diedit: ");
-    //     String merk = scanner.next();
-    //     int deleted = cariMerk(merk);
-    //     if(deleted < 0){
-    //         System.out.println("Merek tidak ada boss");
-    //         return;
-    //     }
-
-    //     for (int i = deleted; i < count - 1; i++) {
-    //        dataSepatu[i] = dataSepatu[i + 1];
-    //     }
-
-    //     dataSepatu = newArray;
-    //     Tampilkan.tampilkanData(1, dataSepatu);
-
-    // }
-
+   
     static int pilihMenu(Scanner scanner){
    
         System.out.println("==== ADMIN TOKO SEPATU LARIS ====");
