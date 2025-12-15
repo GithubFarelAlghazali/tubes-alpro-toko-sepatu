@@ -2,22 +2,28 @@ package TokoSepatu;
 import java.util.Scanner;
 
 public class Edit {
-    public static void editData(Scanner scanner, String[][] data){
+    public static void editData(Scanner scanner, String[][] data, int count){
         // tampilkanDataSepatu(dataSepatu);
+       
         System.out.println();
+
+        if (count == 0) {
+                System.out.println("Data sepatu belum ada. Silakan input data terlebih dahulu.");
+                return;
+                }
+
         System.out.print("Pilih merk yang ingin diedit: ");
         String merk = scanner.next();
-        int edited = 0;
-        boolean isHere = false;
-        for(int i = 0; i < data.length; i++){
-            if(data[i][0].toLowerCase().equals(merk.toLowerCase())){
+        int edited = -1;
+
+        for(int i = 0; i < count; i++){
+            if(data[i][0].equalsIgnoreCase(merk)){
                 edited = i;
-                isHere = true;
             }
         }
 
-        if(!isHere){
-            System.out.println("Merek tidak ada boss");
+        if(edited < 0){
+            System.out.println("Merek tidak ada");
             return;
         }
 
@@ -28,6 +34,8 @@ public class Edit {
 
         data[edited][1] = harga ;
         data[edited][2] = jarak + "km";
+
+        System.out.println("Berhasil edit");
 
         // tampilkanDataSepatu(dataSepatu);
 

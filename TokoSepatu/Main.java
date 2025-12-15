@@ -38,18 +38,19 @@ public class Main{
                 System.out.println("1. Mahal -> Murah");
                 System.out.println("2. Murah -> Mahal ");
                 int mode = scanner.nextInt();
-                Tampilkan.tampilkanData(mode, dataSepatu);
+                Tampilkan.tampilkanData(mode, dataSepatu, count);
             break;
             case 2:
-                Input.inputSepatu(scanner, count, dataSepatu);
+                count = Input.inputSepatu(scanner, count, dataSepatu);
+                break;
             case 3:
-                Edit.editData(scanner, dataSepatu);
-            break;
+                Edit.editData(scanner, dataSepatu, count);
+                break;
             case 4:
-                Hapus.hapusData(scanner, dataSepatu);
+                count = Hapus.hapusData(scanner, dataSepatu, count);
             break;
             case 0:
-                System.out.println("Proram ditutup");
+                System.out.println("Program ditutup");
                 run = false;
             break;
             default:

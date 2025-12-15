@@ -3,36 +3,42 @@ import java.util.Scanner;
 
 public class Hapus {
     
-    public static void hapusData(Scanner scanner, String[][] data){
+    public static int hapusData(Scanner scanner, String[][] data, int count){
         // tampilkanDataSepatu(dataSepatu);
         System.out.println();
-        System.out.print("Pilih merk yang ingin diedit: ");
+
+        if (count == 0) {
+            System.out.println("Data sepatu belum ada. Silakan input data terlebih dahulu.");
+            return count;
+        }
+
+        System.out.print("Pilih merk yang ingin dihapus: ");
         String merk = scanner.next();
-        int edited = 0;
-        boolean isHere = false;
-        for(int i = 0; i < data.length; i++){
-            if(data[i][0].toLowerCase().equals(merk.toLowerCase())){
+        int edited = -1;
+
+        for(int i = 0; i < count; i++){
+            if(data[i][0].equalsIgnoreCase(merk)){
                 edited = i;
-                isHere = true;
             }
         }
 
-        if(!isHere){
-            System.out.println("Merek tidak ada boss");
-            return;
+        if(edited < 0){
+            System.out.println("Merek tidak ada");
+            return count;
         }
-
-        String[][] newArray = new String[data.length - 1][3];
+        String[][] newArray = new String[count - 1][3];
         int pos = 0;
 
-        for (int i = 0; i < data.length; i++) {
+        for (int i = 0; i < count; i++) {
             if(i != edited){
             newArray[pos] = data[i];
             pos++;} 
         }
 
         data = newArray;
+        System.out.println("Berhasil dihapus");
+        
         // tampilkanDataSepatu(dataSepatu);
-
+        return count - 1;
     }
 }
