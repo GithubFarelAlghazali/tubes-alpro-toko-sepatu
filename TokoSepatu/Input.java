@@ -13,6 +13,8 @@ public class Input {
         
         System.out.print("Masukkan merk sepatu: ");
         String merk = scanner.nextLine();
+        System.out.print("Masukkan jenis sepatu: ");
+        String jenis = scanner.nextLine();
         System.out.print("Masukkan harga sepatu: ");
         int harga = Integer.parseInt(scanner.nextLine());
         System.out.print("Masukkan jarak pengiriman (km): ");
@@ -33,21 +35,21 @@ public class Input {
 
             String status = "Diproses";
 
-        data[count][0] = merk;
-        data[count][1] = String.valueOf(harga);
-        data[count][2] = String.valueOf(jarak);
-        data[count][3] = alamat;
-        data[count][4] = String.valueOf((int) ppn);
-        data[count][5] = String.valueOf(ongkir);
-        data[count][6] = String.valueOf((int) totalPPN);
-        data[count][7] = String.valueOf(count);
-        data[count][8] = status;
+            data[count][0] = merk;
+            data[count][1] = jenis;
+            data[count][2] = String.valueOf(harga);
+            data[count][3] = String.valueOf(jarak);
+            data[count][4] = alamat;
+            data[count][5] = String.valueOf(ongkir);
+            data[count][6] = String.valueOf((int) totalSebelumPPN);
+            data[count][7] = String.valueOf((int) ppn);
+            data[count][8] = status;
 
-        count++;
+            count++;
 
-        System.out.println("Data sepatu berhasil ditambahkan.");
+            System.out.println("\nData sepatu berhasil ditambahkan.\n");
 
-        return count;
+            return count;
     }
 
 }

@@ -14,7 +14,8 @@ public class Main{
         System.out.println("1. " + (mode == 1 ? "Urutkan dari murah -> mahal" : "Urutkan dari mahal -> murah"));
         System.out.println("2. Input data sepatu");
         System.out.println("3. Edit data sepatu");
-        System.out.println("4. Hapus data sepatu");
+        System.out.println("4. Ubah status pesanan sepatu");
+        System.out.println("5. Hapus data sepatu");
         System.out.println("0. Keluar");
         System.out.print("Pilih opsi: ");
         int menu = scanner.nextInt();
@@ -37,7 +38,7 @@ public class Main{
                 case 1:
                     System.out.println("Urutkan dari: " + (mode == 1 ? "paling murah" : "paling mahal") + "(y/n):");
                     String input = scanner.next();
-                   
+
                     if (mode == 1) {
                         if (input.equalsIgnoreCase("y")) {
                             mode = 2;
@@ -55,6 +56,9 @@ public class Main{
                     Edit.editData(scanner, dataSepatu, count);
                     break;
                 case 4:
+                    Edit.editStatus(scanner, dataSepatu, count);
+                    break;
+                case 5:
                     count = Hapus.hapusData(scanner, dataSepatu, count);
                     break;
                 case 0:
@@ -64,8 +68,12 @@ public class Main{
                 default:
                     System.out.println("Input tidak terdaftar, masukkan sesuai daftar!");
 
-                }
+            }
+                
+             if(run){
                 Utils.pressToNext(scanner);
+             }  
+                
         }
 
 

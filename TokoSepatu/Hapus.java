@@ -12,31 +12,29 @@ public class Hapus {
             return count;
         }
 
-        System.out.print("Pilih merk yang ingin dihapus: ");
+        System.out.print("Merk sepatu yang ingin dihapus: ");
         String merk = scanner.next();
+        System.out.print("Jenis sepatu yang ingin dihapus: ");
+        String jenis = scanner.next();
         int edited = -1;
 
         for(int i = 0; i < count; i++){
-            if(data[i][0].equalsIgnoreCase(merk)){
+            if(data[i][0].equalsIgnoreCase(merk) && data[i][1].equalsIgnoreCase(jenis)){
                 edited = i;
             }
         }
 
-        if(edited < 0){
-            System.out.println("Merek tidak ada");
+        if (edited < 0) {
+            System.out.println("Merk atau jenis tidak valid");
             return count;
         }
-        String[][] newArray = new String[count - 1][3];
-        int pos = 0;
+        
 
-        for (int i = 0; i < count; i++) {
-            if(i != edited){
-            newArray[pos] = data[i];
-            pos++;} 
+        for (int i = edited; i < count - 1; i++) {
+            data[i] = data[i + 1];
         }
 
-        data = newArray;
-        System.out.println("Berhasil dihapus");
+        System.out.println("\nBerhasil dihapus\n");
         
         // tampilkanDataSepatu(dataSepatu);
         return count - 1;
