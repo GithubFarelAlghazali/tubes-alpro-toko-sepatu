@@ -25,6 +25,7 @@ public class Edit {
 
         if (edited < 0) {
             System.out.println("Merek atau jenis sepatu tidak valid");
+            Utils.pressToNext();
             return;
         }
 
@@ -37,6 +38,7 @@ public class Edit {
         data[edited][3] = jarak;
 
         System.out.println("\nData sepatu berhasil diedit\n");
+        Utils.pressToNext();
 
     }
     
@@ -63,6 +65,7 @@ public class Edit {
 
         if (edited < 0) {
             System.out.println("Merek atau jenis sepatu tidak valid");
+            Utils.pressToNext();
             return;
         }
 
@@ -80,9 +83,8 @@ public class Edit {
             }
         }
 
-  
-
         System.out.println("\nStatus pesanan sepatu berhasil diedit\n");
+        Utils.pressToNext();
 
     }
 }

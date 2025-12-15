@@ -32,13 +32,13 @@ public class Main{
             Tampilkan.tampilkanData(mode, dataSepatu, count);
 
             int menu = pilihMenu(scanner);
-           
+            System.out.println();
 
             switch (menu) {
                 case 1:
                     System.out.println("Urutkan dari: " + (mode == 1 ? "paling murah" : "paling mahal") + "(y/n):");
                     String input = scanner.next();
-
+                    System.out.println();
                     if (mode == 1) {
                         if (input.equalsIgnoreCase("y")) {
                             mode = 2;
@@ -69,10 +69,6 @@ public class Main{
                     System.out.println("Input tidak terdaftar, masukkan sesuai daftar!");
 
             }
-                
-             if(run){
-                Utils.pressToNext(scanner);
-             }  
                 
         }
 

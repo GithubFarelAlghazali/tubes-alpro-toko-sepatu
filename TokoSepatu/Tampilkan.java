@@ -31,8 +31,8 @@ public class Tampilkan {
 
         for (int i = 0; i < count - 1; i++) {
             for (int j = 0; j < count - i - 1; j++) {
-                int h1 = Integer.parseInt(copy[j][7]);
-                int h2 = Integer.parseInt(copy[j + 1][7]);
+                int h1 = Integer.parseInt(copy[j][6]);
+                int h2 = Integer.parseInt(copy[j + 1][6]);
 
                 boolean kondisi = (mode == 1) ? h1 < h2 : h1 > h2;
                 if (kondisi) {
@@ -43,7 +43,7 @@ public class Tampilkan {
             }
         }
         
-        if (adaStatus(data, count, "lunas")) {
+        if (adaStatus(data, count, "DIPROSES")) {
             
             System.out.println("\n=== ADMIN TOKO SEPATU LARIS ===");
             

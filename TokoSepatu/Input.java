@@ -48,8 +48,10 @@ public class Input {
             count++;
 
             System.out.println("\nData sepatu berhasil ditambahkan.\n");
+            Utils.pressToNext();
 
             return count;
+
     }
 
 }

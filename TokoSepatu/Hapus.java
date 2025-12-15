@@ -26,6 +26,7 @@ public class Hapus {
 
         if (edited < 0) {
             System.out.println("Merk atau jenis tidak valid");
+            Utils.pressToNext();
             return count;
         }
         
@@ -35,7 +36,7 @@ public class Hapus {
         }
 
         System.out.println("\nBerhasil dihapus\n");
-        
+        Utils.pressToNext();
         // tampilkanDataSepatu(dataSepatu);
         return count - 1;
     }
