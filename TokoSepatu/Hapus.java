@@ -1,4 +1,4 @@
-package services;
+package TokoSepatu;
 import java.util.Scanner;
 
 public class Hapus {

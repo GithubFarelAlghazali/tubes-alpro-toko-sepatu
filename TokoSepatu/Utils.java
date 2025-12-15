@@ -1,4 +1,4 @@
-package TokoBuku;
+package TokoSepatu;
 import java.util.Scanner;
 
 public class Utils {

@@ -1,4 +1,4 @@
-package TokoBuku;
+package TokoSepatu;
 
 public class Tampilkan {
     public static void tampilkanData(int mode, String[][] data, int count) {
