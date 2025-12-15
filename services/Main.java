@@ -1,4 +1,4 @@
-package TokoSepatu;
+package services;
 import java.util.Scanner;
 
 public class Main{
