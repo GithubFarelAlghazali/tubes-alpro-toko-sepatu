@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main{
 
-    static String[][] dataSepatu = new String[100][5];
+    static String[][] dataSepatu = new String[100][7];
     static int count = 0;
     static int mode = 1;
 

@@ -21,8 +21,8 @@ public class Tampilkan {
         // Sorting berdasarkan harga total (index 5)
         for (int i = 0; i < count - 1; i++) {
             for (int j = 0; j < count - i - 1; j++) {
-                int h1 = Integer.parseInt(copy[j][5]);
-                int h2 = Integer.parseInt(copy[j + 1][5]);
+                int h1 = Integer.parseInt(copy[j][7]);
+                int h2 = Integer.parseInt(copy[j + 1][7]);
 
                 boolean kondisi = (mode == 1) ? h1 < h2 : h1 > h2;
                 if (kondisi) {
@@ -70,7 +70,7 @@ public class Tampilkan {
     static void cetakBaris(String[] d) {
         System.out.printf(
             "%-5s %-15s Rp%-10s %-10s Rp%-10s Rp%-12s\n",
-            d[0], d[1], d[2], d[3], d[4], d[5]
+            d[0], d[1], d[2], d[3], d[4], d[7]
         );
     }
 
