@@ -9,18 +9,17 @@ public class Input {
             System.out.println("Data sepatu sudah penuh, tidak bisa tambah lagi.");
             return count;
         }
-        scanner.nextLine();
         
         System.out.print("Masukkan merk sepatu: ");
-        String merk = scanner.nextLine();
+        String merk = scanner.next();
         System.out.print("Masukkan jenis sepatu: ");
-        String jenis = scanner.nextLine();
+        String jenis = scanner.next();
         System.out.print("Masukkan harga sepatu: ");
-        int harga = Integer.parseInt(scanner.nextLine());
+        int harga = Integer.parseInt(scanner.next());
         System.out.print("Masukkan jarak pengiriman (km): ");
-        int jarak = Integer.parseInt(scanner.nextLine());
+        int jarak = Integer.parseInt(scanner.next());
         System.out.print("Masukkan alamat pengiriman: ");
-        String alamat = scanner.nextLine();
+        String alamat = scanner.next();
         
         int ongkir;
             if (jarak <= 10) {
@@ -30,7 +29,7 @@ public class Input {
             }
 
             int totalSebelumPPN = harga + ongkir;
-            double ppn = totalSebelumPPN * 0.1;
+            double ppn = harga * 0.1;
             double totalPPN = totalSebelumPPN + ppn;
 
             String status = "Diproses";
@@ -51,7 +50,6 @@ public class Input {
             Utils.pressToNext();
 
             return count;
-
     }
 
 }

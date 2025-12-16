@@ -47,7 +47,6 @@ public class Tampilkan {
             
             System.out.println("\n=== ADMIN TOKO SEPATU LARIS ===");
             
-            // ================= TABEL PROSES =================
             System.out.println("\nPESANAN DIPROSES");
             cetakHeader();
             
@@ -87,6 +86,39 @@ public class Tampilkan {
             d[0], d[1], "Rp"+d[2], d[3]+" km", d[4], "Rp"+d[5], "Rp"+d[6], "Rp"+d[7]
         );
     }
+
+    public static void tampilkanHargaTertinggi(String[][] data, int count) {
+
+    if (count == 0) {
+        System.out.println("Data sepatu belum ada.");
+        Utils.pressToNext();
+        return;
+    }
+    
+    int maxHarga = Integer.parseInt(data[0][6]);
+    
+    for (int i = 1; i < count; i++) {
+        int harga = Integer.parseInt(data[i][6]);
+        if (harga > maxHarga) {
+            maxHarga = harga;
+        }
+    }
+    
+    
+    System.out.println("\n=== BARANG DENGAN HARGA TERTINGGI ===");
+    cetakHeader();
+    
+    for (int i = 0; i < count; i++) {
+        int harga = Integer.parseInt(data[i][6]);
+        if (harga == maxHarga) {
+            cetakBaris(data[i]);
+        }
+    }
+    
+    garis();
+    Utils.pressToNext();
+}
+
 
     static void garis() {
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");

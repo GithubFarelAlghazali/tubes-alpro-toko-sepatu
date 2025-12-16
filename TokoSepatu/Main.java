@@ -16,6 +16,7 @@ public class Main{
         System.out.println("3. Edit data sepatu");
         System.out.println("4. Ubah status pesanan sepatu");
         System.out.println("5. Hapus data sepatu");
+        System.out.println("6. Sepatu dengan harga tertinggi");
         System.out.println("0. Keluar");
         System.out.print("Pilih opsi: ");
         int menu = scanner.nextInt();
@@ -60,6 +61,9 @@ public class Main{
                     break;
                 case 5:
                     count = Hapus.hapusData(scanner, dataSepatu, count);
+                    break;
+                case 6:
+                    Tampilkan.tampilkanHargaTertinggi(dataSepatu, count);
                     break;
                 case 0:
                     System.out.println("Program ditutup");
